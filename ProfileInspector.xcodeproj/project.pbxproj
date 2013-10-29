@@ -59,6 +59,7 @@
 		410F429617FEFF0600C7C576 /* GenerateThumbnailForURL.m in Sources */ = {isa = PBXBuildFile; fileRef = 410F429517FEFF0600C7C576 /* GenerateThumbnailForURL.m */; };
 		410F429817FEFF0600C7C576 /* GeneratePreviewForURL.m in Sources */ = {isa = PBXBuildFile; fileRef = 410F429717FEFF0600C7C576 /* GeneratePreviewForURL.m */; };
 		410F429A17FEFF0600C7C576 /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = 410F429917FEFF0600C7C576 /* main.c */; };
+		413F2830181FDF8200A272B9 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 413F282F181FDF8200A272B9 /* Security.framework */; };
 		416135A017FF271300EE8C7C /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4161359F17FF271300EE8C7C /* Cocoa.framework */; };
 		416135A217FF27A900EE8C7C /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 416135A117FF27A900EE8C7C /* WebKit.framework */; };
 		416135A417FF2B7F00EE8C7C /* ProfileInspector.qlgenerator in CopyFiles */ = {isa = PBXBuildFile; fileRef = 410F428417FEFF0600C7C576 /* ProfileInspector.qlgenerator */; };
@@ -133,6 +134,7 @@
 		410F429717FEFF0600C7C576 /* GeneratePreviewForURL.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GeneratePreviewForURL.m; sourceTree = "<group>"; };
 		410F429917FEFF0600C7C576 /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
 		410F429B17FEFF0600C7C576 /* ProfileInspector-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ProfileInspector-Prefix.pch"; sourceTree = "<group>"; };
+		413F282F181FDF8200A272B9 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		4161359F17FF271300EE8C7C /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		416135A117FF27A900EE8C7C /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
@@ -142,6 +144,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				413F2830181FDF8200A272B9 /* Security.framework in Frameworks */,
 				416135A217FF27A900EE8C7C /* WebKit.framework in Frameworks */,
 				416135A017FF271300EE8C7C /* Cocoa.framework in Frameworks */,
 				410F428E17FEFF0600C7C576 /* CoreFoundation.framework in Frameworks */,
@@ -250,6 +253,7 @@
 		410F428617FEFF0600C7C576 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				413F282F181FDF8200A272B9 /* Security.framework */,
 				416135A117FF27A900EE8C7C /* WebKit.framework */,
 				4161359F17FF271300EE8C7C /* Cocoa.framework */,
 				410F428717FEFF0600C7C576 /* QuickLook.framework */,

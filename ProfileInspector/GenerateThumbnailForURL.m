@@ -10,7 +10,7 @@
 
 OSStatus GenerateThumbnailForURL(void *thisInterface, QLThumbnailRequestRef thumbnail, CFURLRef url, CFStringRef contentTypeUTI, CFDictionaryRef options, CGSize maxSize);
 void CancelThumbnailGeneration(void *thisInterface, QLThumbnailRequestRef thumbnail);
-NSDictionary * provisioningProfileAtPath(NSData *data);
+NSDictionary * provisioningProfileInData(NSData *data);
 
 /* -----------------------------------------------------------------------------
     Generate a thumbnail for file
@@ -22,28 +22,31 @@ NSDictionary * provisioningProfileAtPath(NSData *data);
 OSStatus GenerateThumbnailForURL(void *thisInterface, QLThumbnailRequestRef thumbnail, CFURLRef url, CFStringRef contentTypeUTI, CFDictionaryRef options, CGSize maxSize)
 {
  
-    ZipFile *unzipFile= [[ZipFile alloc] initWithFileName:@"app.ipa"
-                                                     mode:ZipFileModeUnzip];
+    ZipFile *unzipFile= [[ZipFile alloc] initWithFileName:@"app.ipa" mode:ZipFileModeUnzip];
 
-    [unzipFile locateFileInZip:@"Payload/spotmyride.app/embedded.mobileprovision"];
+    unsigned long fileSize = 0;
+    NSString *fileName;
+    
+    NSArray *files = [unzipFile listFileInZipInfos];
+    for (FileInZipInfo *info in files) {
+        
+        if (([info.name rangeOfString:@"embedded.mobileprovision"].length > 0)) {
+            fileSize = (unsigned long) info.length;
+            fileName = info.name;
+            break;
+        }
+    }
+    
+    [unzipFile locateFileInZip:fileName];
     ZipReadStream *read= [unzipFile readCurrentFileInZip];
     
     
-    NSMutableData *data= [[NSMutableData alloc] initWithLength:9092];
+    NSMutableData *data= [[NSMutableData alloc] initWithLength:fileSize];
     long bytesRead = [read readDataWithBuffer:data];
     [read finishedReading];
     [unzipFile close];
-    
-    NSLog(@"Data Read: %ld",bytesRead);
-
-    
-//    NSString *dataStr;
-//    
-//    
-//    NSString *newStr = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-//    NSLog(@"%@", [data description]);
-    
-    provisioningProfileAtPath(data);
+        
+    NSDictionary *provisioningProfile = provisioningProfileInData(data);
     
     /*
     NSString *_content = [NSString stringWithContentsOfURL:(__bridge NSURL *)url encoding:NSUTF8StringEncoding error:nil];
@@ -82,7 +85,7 @@ OSStatus GenerateThumbnailForURL(void *thisInterface, QLThumbnailRequestRef thum
     return noErr;
 }
 
-NSDictionary * provisioningProfileAtPath(NSData *data){
+NSDictionary * provisioningProfileInData(NSData *data){
     CMSDecoderRef decoder = NULL;
     CFDataRef dataRef = NULL;
     NSString *plistString = nil;

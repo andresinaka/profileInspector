@@ -48,13 +48,10 @@ OSStatus GeneratePreviewForURL(void *thisInterface, QLPreviewRequestRef preview,
         html = [previewBuilder createHTMLPreviewFromDictionary:provisioningProfile];
     }
     
-    
-    NSString *_content = provisioningProfile[@"TeamName"];
-    
-    QLPreviewRequestSetDataRepresentation(preview,(__bridge CFDataRef)[html dataUsingEncoding:NSUTF8StringEncoding],kUTTypeHTML,NULL);
-    
-    NSLog(@"GeneratePreviewForURL");
-    
+    QLPreviewRequestSetDataRepresentation(preview,
+                                          (__bridge CFDataRef)[html dataUsingEncoding:NSUTF8StringEncoding],
+                                          kUTTypeHTML,
+                                          NULL);
     return noErr;
 }
 

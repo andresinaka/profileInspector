@@ -30,14 +30,14 @@
     [htmlText appendFormat:@"<tr><td>App</td><td>%@</td></tr>",appName];
     [htmlText appendFormat:@"<tr><td>Team</td><td>%@</td></tr>",teamName];
     [htmlText appendFormat:@"<tr><td>UUID</td><td>%@</td></tr>",UUID];
-    [htmlText appendFormat:@"<tr><td>Creation Date<td><td>%@</td></tr>",creationDate];
-    [htmlText appendFormat:@"<tr><td>Expiration Date<td><td>%@</td></tr>",expirationDate];
+    [htmlText appendFormat:@"<tr><td>Creation Date</td><td>%@</td></tr>",creationDate];
+    [htmlText appendFormat:@"<tr><td>Expiration Date</td><td>%@</td></tr>",expirationDate];
     [htmlText appendFormat: @"</table>"];
     
     [htmlText appendFormat:@"Total Provisioned Devices: %ld",[provisionedDevices count]];
     [htmlText appendFormat: @"<table>"];
     for (NSString *deviceUDID in provisionedDevices) {
-        [htmlText appendFormat:@"<tr><td>%@</td></tr>",[deviceUDID lowercaseString]];
+        [htmlText appendFormat:@"<tr><td>%lu</td><td>%@</td></tr>",[provisionedDevices indexOfObject:deviceUDID]+1 ,[deviceUDID lowercaseString]];
     }
     [htmlText appendFormat: @"</table>"];
     [htmlText appendFormat: @"</body>"];

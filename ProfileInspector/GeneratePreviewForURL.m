@@ -6,6 +6,7 @@
 #include "FileInZipInfo.h"
 #include "ZipReadStream.h"
 #include <Security/CMSDecoder.h>
+#include "HTMLPreviewBuilder.h"
 
 OSStatus GeneratePreviewForURL(void *thisInterface, QLPreviewRequestRef preview, CFURLRef url, CFStringRef contentTypeUTI, CFDictionaryRef options);
 void CancelPreviewGeneration(void *thisInterface, QLPreviewRequestRef preview);
@@ -41,39 +42,16 @@ OSStatus GeneratePreviewForURL(void *thisInterface, QLPreviewRequestRef preview,
     [unzipFile close];
     
     NSDictionary *provisioningProfile = provisioningProfileInData(data);
-    
+    HTMLPreviewBuilder *previewBuilder = [[HTMLPreviewBuilder alloc]init];
+    NSString *html;
     if (provisioningProfile) {
-        NSString *_html = [NSString stringWithFormat:@"<html><body><pre>%@</pre></body></html>", provisioningProfile[@"TeamName"]];
-        NSData *_data   = [_html dataUsingEncoding:NSUTF8StringEncoding];
-        
-//		NSRect _rect = NSMakeRect(0.0, 0.0, 600.0, 800.0);
-//		float _scale = maxSize.height / 800.0;
-//		NSSize _scaleSize = NSMakeSize(_scale, _scale);
-//		CGSize _thumbSize = NSSizeToCGSize((CGSize) { maxSize.width * (600.0/800.0), maxSize.height});
-//        //
-//        //        // Create the webview to display the thumbnail
-//        WebView *_webView = [[WebView alloc] initWithFrame:_rect];
-//		[_webView scaleUnitSquareToSize:_scaleSize];
-//        [_webView.mainFrame.frameView setAllowsScrolling:YES];
-//        [_webView.mainFrame loadData:_data MIMEType:@"text/html" textEncodingName:@"utf-8" baseURL:nil];
-//        
-//		while([_webView isLoading]) CFRunLoopRunInMode(kCFRunLoopDefaultMode, 0, true);
-//        [_webView display];
-//        //
-//        // Draw the webview in the correct context
-//		CGContextRef _context = QLThumbnailRequestCreateContext(thumbnail, _thumbSize, false, NULL);
-//		if (_context) {
-//			NSGraphicsContext* _graphicsContext = [NSGraphicsContext graphicsContextWithGraphicsPort:(void *)_context flipped:_webView.isFlipped];
-//			[_webView displayRectIgnoringOpacity:_webView.bounds inContext:_graphicsContext];
-//			QLThumbnailRequestFlushContext(thumbnail, _context);
-//			CFRelease(_context);
-//		}
+        html = [previewBuilder createHTMLPreviewFromDictionary:provisioningProfile];
     }
     
     
-    NSString *_content = @"THIS IS A TEXT FOR TEST";
+    NSString *_content = provisioningProfile[@"TeamName"];
     
-    QLPreviewRequestSetDataRepresentation(preview,(__bridge CFDataRef)[_content dataUsingEncoding:NSUTF8StringEncoding],kUTTypePlainText,NULL);
+    QLPreviewRequestSetDataRepresentation(preview,(__bridge CFDataRef)[html dataUsingEncoding:NSUTF8StringEncoding],kUTTypeHTML,NULL);
     
     NSLog(@"GeneratePreviewForURL");
     

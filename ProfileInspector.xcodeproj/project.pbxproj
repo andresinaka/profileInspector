@@ -63,6 +63,8 @@
 		416135A017FF271300EE8C7C /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4161359F17FF271300EE8C7C /* Cocoa.framework */; };
 		416135A217FF27A900EE8C7C /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 416135A117FF27A900EE8C7C /* WebKit.framework */; };
 		416135A417FF2B7F00EE8C7C /* ProfileInspector.qlgenerator in CopyFiles */ = {isa = PBXBuildFile; fileRef = 410F428417FEFF0600C7C576 /* ProfileInspector.qlgenerator */; };
+		E0A563B318271536005CBEDA /* HTMLPreviewBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = E0A563B118271536005CBEDA /* HTMLPreviewBuilder.h */; };
+		E0A563B418271536005CBEDA /* HTMLPreviewBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = E0A563B218271536005CBEDA /* HTMLPreviewBuilder.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -137,6 +139,8 @@
 		413F282F181FDF8200A272B9 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		4161359F17FF271300EE8C7C /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		416135A117FF27A900EE8C7C /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
+		E0A563B118271536005CBEDA /* HTMLPreviewBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTMLPreviewBuilder.h; sourceTree = "<group>"; };
+		E0A563B218271536005CBEDA /* HTMLPreviewBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTMLPreviewBuilder.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -271,6 +275,8 @@
 				410F429717FEFF0600C7C576 /* GeneratePreviewForURL.m */,
 				410F429917FEFF0600C7C576 /* main.c */,
 				410F429017FEFF0600C7C576 /* Supporting Files */,
+				E0A563B118271536005CBEDA /* HTMLPreviewBuilder.h */,
+				E0A563B218271536005CBEDA /* HTMLPreviewBuilder.m */,
 			);
 			path = ProfileInspector;
 			sourceTree = "<group>";
@@ -310,6 +316,7 @@
 				410A49481800735F0017EB36 /* inflate.h in Headers */,
 				410A494A1800735F0017EB36 /* inftrees.h in Headers */,
 				410A494C1800735F0017EB36 /* trees.h in Headers */,
+				E0A563B318271536005CBEDA /* HTMLPreviewBuilder.h in Headers */,
 				410A494E1800735F0017EB36 /* zconf.h in Headers */,
 				410A494F1800735F0017EB36 /* zlib.h in Headers */,
 				410A49511800735F0017EB36 /* zutil.h in Headers */,
@@ -400,6 +407,7 @@
 				410A4905180072280017EB36 /* ZipReadStream.m in Sources */,
 				410A4907180072280017EB36 /* ZipWriteStream.m in Sources */,
 				410A49141800731D0017EB36 /* ioapi.c in Sources */,
+				E0A563B418271536005CBEDA /* HTMLPreviewBuilder.m in Sources */,
 				410A49161800731D0017EB36 /* unzip.c in Sources */,
 				410A49181800731D0017EB36 /* zip.c in Sources */,
 				410A49381800735F0017EB36 /* adler32.c in Sources */,

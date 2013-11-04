@@ -65,6 +65,7 @@
 		416135A417FF2B7F00EE8C7C /* ProfileInspector.qlgenerator in CopyFiles */ = {isa = PBXBuildFile; fileRef = 410F428417FEFF0600C7C576 /* ProfileInspector.qlgenerator */; };
 		E0A563B318271536005CBEDA /* HTMLPreviewBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = E0A563B118271536005CBEDA /* HTMLPreviewBuilder.h */; };
 		E0A563B418271536005CBEDA /* HTMLPreviewBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = E0A563B218271536005CBEDA /* HTMLPreviewBuilder.m */; };
+		E0A74A9518285D8F006BEFB7 /* inspectorStyle.css in Resources */ = {isa = PBXBuildFile; fileRef = E0A74A9418285D8F006BEFB7 /* inspectorStyle.css */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -141,6 +142,7 @@
 		416135A117FF27A900EE8C7C /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		E0A563B118271536005CBEDA /* HTMLPreviewBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTMLPreviewBuilder.h; sourceTree = "<group>"; };
 		E0A563B218271536005CBEDA /* HTMLPreviewBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTMLPreviewBuilder.m; sourceTree = "<group>"; };
+		E0A74A9418285D8F006BEFB7 /* inspectorStyle.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = inspectorStyle.css; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -277,6 +279,7 @@
 				410F429017FEFF0600C7C576 /* Supporting Files */,
 				E0A563B118271536005CBEDA /* HTMLPreviewBuilder.h */,
 				E0A563B218271536005CBEDA /* HTMLPreviewBuilder.m */,
+				E0A74A9418285D8F006BEFB7 /* inspectorStyle.css */,
 			);
 			path = ProfileInspector;
 			sourceTree = "<group>";
@@ -378,6 +381,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				410F429417FEFF0600C7C576 /* InfoPlist.strings in Resources */,
+				E0A74A9518285D8F006BEFB7 /* inspectorStyle.css in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

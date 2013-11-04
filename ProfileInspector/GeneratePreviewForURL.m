@@ -48,10 +48,26 @@ OSStatus GeneratePreviewForURL(void *thisInterface, QLPreviewRequestRef preview,
         html = [previewBuilder createHTMLPreviewFromDictionary:provisioningProfile];
     }
     
+    NSBundle *bundle = [NSBundle bundleForClass:[HTMLPreviewBuilder class]];
+    NSURL *cssFile = [bundle URLForResource:@"inspectorStyle" withExtension:@"css"];
+    NSData *cssData = [NSData dataWithContentsOfURL:cssFile];
+    
+    NSDictionary *properties = @{
+                    (__bridge NSString *)kQLPreviewPropertyTextEncodingNameKey : @"UTF-8",
+                    (__bridge NSString *)kQLPreviewPropertyMIMETypeKey : @"text/html",
+                    (__bridge NSString *)kQLPreviewPropertyAttachmentsKey : @{
+                            @"inspectorStyle.css" : @{
+                                    (__bridge NSString *)kQLPreviewPropertyMIMETypeKey : @"text/css",
+                                    (__bridge NSString *)kQLPreviewPropertyAttachmentDataKey: cssData,
+                            },
+                    },
+    };
+    
+    
     QLPreviewRequestSetDataRepresentation(preview,
                                           (__bridge CFDataRef)[html dataUsingEncoding:NSUTF8StringEncoding],
                                           kUTTypeHTML,
-                                          NULL);
+                                          (__bridge CFDictionaryRef)properties);
     return noErr;
 }
 

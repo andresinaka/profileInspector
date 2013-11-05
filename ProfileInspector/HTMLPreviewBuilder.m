@@ -40,7 +40,7 @@
     [htmlText appendFormat:@"<tr><th></th><th>UDID</th></tr>\n"];
 
     for (NSString *deviceUDID in provisionedDevices) {
-        [htmlText appendFormat:@"<tr><td>%lu</td><td>%@</td></tr>\n",[provisionedDevices indexOfObject:deviceUDID]+1 ,[deviceUDID lowercaseString]];
+        [htmlText appendFormat:@"<tr><td>%lu</td><td>%@</td></tr>\n",[provisionedDevices indexOfObject:deviceUDID]+1 ,[self splitInToken:[deviceUDID lowercaseString]]];
     }
     [htmlText appendFormat: @"</table>\n"];
     [htmlText appendFormat:@"</div>\n"];
@@ -49,4 +49,11 @@
     return htmlText;
 }
 
+- (NSString *) splitInToken:(NSString *)stringToSplit {
+    NSMutableArray *splitted = [[NSMutableArray alloc] init];
+    for (NSInteger i = 0; i < 7 ; i++) {
+        [splitted addObject:[stringToSplit substringWithRange:NSMakeRange(i * 5, 5)]];
+    }
+    return [splitted componentsJoinedByString:@" "];
+}
 @end

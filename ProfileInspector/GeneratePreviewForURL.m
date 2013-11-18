@@ -14,7 +14,10 @@ NSDictionary * provisioningProfileInData(NSData *data);
 
 OSStatus GeneratePreviewForURL(void *thisInterface, QLPreviewRequestRef preview, CFURLRef url, CFStringRef contentTypeUTI, CFDictionaryRef options)
 {
-    ZipFile *unzipFile= [[ZipFile alloc] initWithFileName:@"app.ipa" mode:ZipFileModeUnzip];
+
+
+    NSString *fileWithPath = [(__bridge NSURL *) url path];
+    ZipFile *unzipFile= [[ZipFile alloc] initWithFileName:fileWithPath mode:ZipFileModeUnzip];
     
     unsigned long fileSize = 0;
     NSString *fileName;
@@ -47,6 +50,9 @@ OSStatus GeneratePreviewForURL(void *thisInterface, QLPreviewRequestRef preview,
     NSURL *cssFile = [bundle URLForResource:@"inspectorStyle" withExtension:@"css"];
     NSData *cssData = [NSData dataWithContentsOfURL:cssFile];
     
+    NSURL *bootstrap = [bundle URLForResource:@"bootstrap" withExtension:@"css"];
+    NSData *bootstrapData = [NSData dataWithContentsOfFile:bootstrap];
+    
     NSDictionary *properties = @{
                     (__bridge NSString *)kQLPreviewPropertyTextEncodingNameKey : @"UTF-8",
                     (__bridge NSString *)kQLPreviewPropertyMIMETypeKey : @"text/html",
@@ -54,6 +60,10 @@ OSStatus GeneratePreviewForURL(void *thisInterface, QLPreviewRequestRef preview,
                             @"inspectorStyle.css" : @{
                                     (__bridge NSString *)kQLPreviewPropertyMIMETypeKey : @"text/css",
                                     (__bridge NSString *)kQLPreviewPropertyAttachmentDataKey: cssData,
+                            },
+                            @"bootstrap.css" : @{
+                                    (__bridge NSString *)kQLPreviewPropertyMIMETypeKey : @"text/css",
+                                    (__bridge NSString *)kQLPreviewPropertyAttachmentDataKey: bootstrapData,
                             },
                     },
     };

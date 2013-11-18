@@ -23,21 +23,22 @@
     
     
     NSMutableString *htmlText = [[NSMutableString alloc] init];
-    [htmlText appendFormat: @"<html><head><link rel='stylesheet' type='text/css' href='cid:inspectorStyle.css'><title></title></head>"];
-    [htmlText appendFormat: @"<body>\n"];
+    [htmlText appendFormat: @"<!DOCTYPE html><html><head><link rel='stylesheet' type='text/css' href='cid:bootstrap.css'><link rel='stylesheet' type='text/css' href='cid:inspectorStyle.css'><title></title></head>"];
+    [htmlText appendFormat: @"<body>"];
 
-    [htmlText appendFormat: @"<table>\n"];
-    [htmlText appendFormat:@"<tr><td>App</td><td>%@</td></tr>\n",appName];
-    [htmlText appendFormat:@"<tr><td>Team</td><td>%@</td></tr>\n",teamName];
-    [htmlText appendFormat:@"<tr><td>UUID</td><td>%@</td></tr>\n",UUID];
-    [htmlText appendFormat:@"<tr><td>Creation Date</td><td>%@</td></tr>\n",creationDate];
-    [htmlText appendFormat:@"<tr><td>Expiration Date</td><td>%@</td></tr>\n",expirationDate];
-    [htmlText appendFormat: @"</table>\n"];
+//    [htmlText appendFormat: @"<table>\n"];
+//    [htmlText appendFormat:@"<tr><td>App</td><td>%@</td></tr>\n",appName];
+//    [htmlText appendFormat:@"<tr><td>Team</td><td>%@</td></tr>\n",teamName];
+//    [htmlText appendFormat:@"<tr><td>UUID</td><td>%@</td></tr>\n",UUID];
+//    [htmlText appendFormat:@"<tr><td>Creation Date</td><td>%@</td></tr>\n",creationDate];
+//    [htmlText appendFormat:@"<tr><td>Expiration Date</td><td>%@</td></tr>\n",expirationDate];
+//    [htmlText appendFormat: @"</table>\n"];
+
     
-    [htmlText appendFormat:@"<div id='provisionedDevices-section'>\n"];
-    [htmlText appendFormat:@"Total Provisioned Devices: %ld",[provisionedDevices count]];
-    [htmlText appendFormat: @"<table class='provisioned-devices'>\n"];
-    [htmlText appendFormat:@"<tr><th></th><th>UDID</th></tr>\n"];
+    [htmlText appendFormat:@"<div class='panel panel-default'>"];
+    [htmlText appendFormat:@"<div class='panel-heading'>Provisioned Devices: %lu</div>",(unsigned long)[provisionedDevices count]];
+    [htmlText appendFormat: @"<table class='table'>\n"];
+    [htmlText appendFormat:@"<tr><th>#</th><th>UDID</th></tr>\n"];
 
     for (NSString *deviceUDID in provisionedDevices) {
         [htmlText appendFormat:@"<tr><td>%lu</td><td>%@</td></tr>\n",[provisionedDevices indexOfObject:deviceUDID]+1 ,[self splitInToken:[deviceUDID lowercaseString]]];

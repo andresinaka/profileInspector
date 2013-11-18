@@ -21,7 +21,6 @@ NSDictionary * provisioningProfileInData(NSData *data);
 
 OSStatus GenerateThumbnailForURL(void *thisInterface, QLThumbnailRequestRef thumbnail, CFURLRef url, CFStringRef contentTypeUTI, CFDictionaryRef options, CGSize maxSize)
 {
-
     return noErr;
 }
 

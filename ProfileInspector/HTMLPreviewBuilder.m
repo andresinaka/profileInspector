@@ -16,6 +16,7 @@
     NSString *appName = provisioningProfile[@"Name"];
     NSString *teamName = provisioningProfile[@"TeamName"];
     NSString *apsEnvironmnet = provisioningProfile[@"Entitlements"][@"aps-environment"];
+    NSString *appId = provisioningProfile[@"Entitlements"][@"application-identifier"];
     NSString *creationDate = provisioningProfile[@"CreationDate"];
     NSString *expirationDate = provisioningProfile[@"ExpirationDate"];
     NSString *UUID = provisioningProfile[@"UUID"];
@@ -25,14 +26,15 @@
     NSMutableString *htmlText = [[NSMutableString alloc] init];
     [htmlText appendFormat: @"<!DOCTYPE html><html><head><link rel='stylesheet' type='text/css' href='cid:bootstrap.css'><link rel='stylesheet' type='text/css' href='cid:inspectorStyle.css'><title></title></head>"];
     [htmlText appendFormat: @"<body>"];
-
-    [htmlText appendFormat: @"<table>\n"];
-    [htmlText appendFormat:@"<tr><td>App</td><td>%@</td></tr>\n",appName];
-    [htmlText appendFormat:@"<tr><td>Team</td><td>%@</td></tr>\n",teamName];
-    [htmlText appendFormat:@"<tr><td>UUID</td><td>%@</td></tr>\n",UUID];
-    [htmlText appendFormat:@"<tr><td>Creation Date</td><td>%@</td></tr>\n",creationDate];
-    [htmlText appendFormat:@"<tr><td>Expiration Date</td><td>%@</td></tr>\n",expirationDate];
-    [htmlText appendFormat: @"</table>\n"];
+    
+    [htmlText appendFormat: @"<dl class='dl-horizontal'>\n"];
+    [htmlText appendFormat:@"<dt>App</dt><dd>%@</dd>\n",appName];
+    [htmlText appendFormat:@"<dt>App Id</dt><dd>%@</dd>\n",appId];
+    [htmlText appendFormat:@"<dt>Team</dt><dd>%@</dd>\n",teamName];
+    [htmlText appendFormat:@"<dt>UUID</dt><dd>%@</dd>\n",UUID];
+    [htmlText appendFormat:@"<dt>Creation Date</dt><dd>%@</dd>\n",creationDate];
+    [htmlText appendFormat:@"<dt>Expiration Date</dt><dd>%@</dd>\n",expirationDate];
+    [htmlText appendFormat: @"</dl>\n"];
 
     
     

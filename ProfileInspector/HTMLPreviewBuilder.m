@@ -26,18 +26,19 @@
     [htmlText appendFormat: @"<!DOCTYPE html><html><head><link rel='stylesheet' type='text/css' href='cid:bootstrap.css'><link rel='stylesheet' type='text/css' href='cid:inspectorStyle.css'><title></title></head>"];
     [htmlText appendFormat: @"<body>"];
 
-//    [htmlText appendFormat: @"<table>\n"];
-//    [htmlText appendFormat:@"<tr><td>App</td><td>%@</td></tr>\n",appName];
-//    [htmlText appendFormat:@"<tr><td>Team</td><td>%@</td></tr>\n",teamName];
-//    [htmlText appendFormat:@"<tr><td>UUID</td><td>%@</td></tr>\n",UUID];
-//    [htmlText appendFormat:@"<tr><td>Creation Date</td><td>%@</td></tr>\n",creationDate];
-//    [htmlText appendFormat:@"<tr><td>Expiration Date</td><td>%@</td></tr>\n",expirationDate];
-//    [htmlText appendFormat: @"</table>\n"];
+    [htmlText appendFormat: @"<table>\n"];
+    [htmlText appendFormat:@"<tr><td>App</td><td>%@</td></tr>\n",appName];
+    [htmlText appendFormat:@"<tr><td>Team</td><td>%@</td></tr>\n",teamName];
+    [htmlText appendFormat:@"<tr><td>UUID</td><td>%@</td></tr>\n",UUID];
+    [htmlText appendFormat:@"<tr><td>Creation Date</td><td>%@</td></tr>\n",creationDate];
+    [htmlText appendFormat:@"<tr><td>Expiration Date</td><td>%@</td></tr>\n",expirationDate];
+    [htmlText appendFormat: @"</table>\n"];
 
     
+    
     [htmlText appendFormat:@"<div class='panel panel-default'>"];
-    [htmlText appendFormat:@"<div class='panel-heading'>Provisioned Devices: %lu</div>",(unsigned long)[provisionedDevices count]];
-    [htmlText appendFormat: @"<table class='table'>\n"];
+    [htmlText appendFormat:@"<div class='panel-heading'><strong>Provisioned Devices: %lu</strong></div>",(unsigned long)[provisionedDevices count]];
+    [htmlText appendFormat: @"<table class='table table-condensed table-striped'>\n"];
     [htmlText appendFormat:@"<tr><th>#</th><th>UDID</th></tr>\n"];
 
     for (NSString *deviceUDID in provisionedDevices) {

@@ -51,7 +51,7 @@ OSStatus GeneratePreviewForURL(void *thisInterface, QLPreviewRequestRef preview,
     NSData *cssData = [NSData dataWithContentsOfURL:cssFile];
     
     NSURL *bootstrap = [bundle URLForResource:@"bootstrap" withExtension:@"css"];
-    NSData *bootstrapData = [NSData dataWithContentsOfFile:bootstrap];
+    NSData *bootstrapData = [NSData dataWithContentsOfURL:bootstrap];
     
     NSDictionary *properties = @{
                     (__bridge NSString *)kQLPreviewPropertyTextEncodingNameKey : @"UTF-8",

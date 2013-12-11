@@ -39,7 +39,7 @@
     
     
     [htmlText appendFormat:@"<div class='panel panel-default'>"];
-    [htmlText appendFormat:@"<div class='panel-heading'><strong>Provisioned Devices: %lu</strong></div>",(unsigned long)[provisionedDevices count]];
+    [htmlText appendFormat:@"<div class='panel-heading'><b>Provisioned Devices: %lu</b></div>",(unsigned long)[provisionedDevices count]];
     [htmlText appendFormat: @"<table class='table table-condensed table-striped'>\n"];
     [htmlText appendFormat:@"<tr><th>#</th><th>UDID</th></tr>\n"];
 
